@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { IssuesService } from './issues.service';
 import { CreateIssueDto } from './dto/issue.dto';
 import { Issue } from './issue.model';
@@ -23,5 +31,9 @@ export class IssuesController {
     @Body() issue: Partial<Issue>,
   ): Promise<void> {
     await this.issuesService.updateIssue(id, issue);
+  }
+  @Delete(':id')
+  async deleteIssue(@Param('id') id: string): Promise<void> {
+    await this.issuesService.deleteIssue(id);
   }
 }
