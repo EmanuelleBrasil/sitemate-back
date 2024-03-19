@@ -12,4 +12,8 @@ export class IssuesService {
   async createIssue(issue: CreateIssueDto) {
     return await this.issueModel.create(issue);
   }
+
+  async findOneIssue(issueId: string): Promise<Issue> {
+    return await this.issueModel.findById(issueId);
+  }
 }
