@@ -16,4 +16,8 @@ export class IssuesService {
   async findOneIssue(issueId: string): Promise<Issue> {
     return await this.issueModel.findById(issueId);
   }
+
+  async updateIssue(issueId: string, issue: Partial<Issue>): Promise<void> {
+    await this.issueModel.updateOne({ _id: issueId }, issue);
+  }
 }
